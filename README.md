@@ -19,13 +19,22 @@ This repository contains my personal configuration files for my Linux setup.
 - `Btop`
 - And more configuration
 
-## 🚀 Setup (Zsh only for now)
+## 🚀 Zsh Setup
 
 Clone the repo and copy the file manually:
 
 ```bash
-git clone https://github.com/cilginc/.config.git
 cp .config/zsh/zshrc ~/.zshrc
 ```
 
 You also need to install `fzf`, `eza`, `starship` and `zoxide` for better experience.
+
+## Tauon Setup
+
+> [!WARNING] This installation only for `AUR` repo.
+
+```bash
+mv ~/.local/share/TauonMusicBox/tauon.conf ~/.local/share/TauonMusicBox/tauon.conf.bak
+cp .config/TauonMusicBox/tauon.conf ~/.local/share/TauonMusicBox/tauon.conf
+cp -r .config/TauonMusicBox/theme ~/.local/share/TauonMusicBox/theme/
+```
