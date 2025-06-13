@@ -20,6 +20,11 @@ This repository contains my personal configuration files for my Linux setup.
 - `Btop`
 - And more configuration
 
+## Todo
+
+- [ ] Add install script
+- [ ] Add screenshots
+
 ## Zsh Setup
 
 Clone the repo and copy the file manually:
