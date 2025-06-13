@@ -28,4 +28,4 @@ git clone https://github.com/cilginc/.config.git
 cp .config/zsh/zshrc ~/.zshrc
 ```
 
-You also need to install `fzf` and `eza` for better experience.
+You also need to install `fzf`, `eza` and `starship` for better experience.
