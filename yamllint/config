@@ -1,0 +1,13 @@
+extends: default
+
+rules:
+  document-start: disable  # "---" ile başlamayı zorunlu kılma
+  line-length:
+    max: 300               # Daha uzun satıra izin ver
+    level: warning         # İstersen 'disable' de yapabilirsin
+  trailing-spaces: disable
+  indentation:
+    spaces: consistent
+    indent-sequences: whatever
+  comments: disable
+  comments-indentation: disable
