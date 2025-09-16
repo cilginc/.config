@@ -67,6 +67,8 @@ alias k="kubectl"
 alias open="xdg-open"
 alias :q='exit'
 alias n="nvim"
+alias tf="terraform"
+# alias tf="tofu"
 
 # Remove this lines if you don't use eza or exa 
 alias ls='eza'
@@ -93,3 +95,5 @@ function y() {
 
 eval "$(starship init zsh)"
 # eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/oh-my-posh.json)"
+
+autoload -U +X bashcompinit && bashcompinit
