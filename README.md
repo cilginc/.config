@@ -9,17 +9,6 @@ This repository contains my personal configuration files for my Linux setup.
 
 - [`~/.zshrc`](./zsh/zshrc): My Zsh shell configuration.
 
-## 🧩 Planned Additions
-
-- `Neovim`
-- `Hyprland`
-- `Waybar`
-- `Swaync`
-- `Wofi`
-- `Wlogout`
-- `Btop`
-- And more configuration
-
 ## Todo
 
 - [ ] Add install script
@@ -31,6 +20,12 @@ Clone the repo and copy the file manually:
 
 ```bash
 cp .config/zsh/zshrc ~/.zshrc
+```
+
+After that reopen your terminal and update the plugins:
+
+```bash
+zinit update
 ```
 
 > [!TIP]
