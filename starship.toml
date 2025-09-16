@@ -1,5 +1,5 @@
 [aws]
-symbol = "  "
+symbol = " "
 
 [buf]
 symbol = " "
@@ -25,12 +25,21 @@ read_only = " 󰌾"
 [docker_context]
 symbol = " "
 only_with_files = true
-detect_files = ["docker-compose.yml", "docker-compose.yaml", "Dockerfile", "compose.yaml", "compose.yml"]
+detect_files = [
+  "docker-compose.yml",
+  "docker-compose.yaml",
+  "Dockerfile",
+  "compose.yaml",
+  "compose.yml",
+]
 
 [kubernetes]
 symbol = "󱃾 "
 disabled = false
-detect_env_vars = ["KUBE"]
+detect_env_vars = ["KUBE", "KUBECONFIG"]
+
+[terraform]
+symbol = " "
 
 [elixir]
 symbol = " "
