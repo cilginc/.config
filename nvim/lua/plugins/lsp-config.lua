@@ -3,33 +3,32 @@ return {
 		"williamboman/mason.nvim",
 		config = function()
 			require("mason").setup()
+			ensure_installed = {
+				"pyright",
+				"ansiblels",
+				"awk_ls",
+				"lua_ls",
+				"bashls",
+				"html",
+				"terraformls",
+				"yamlls",
+				"cssls",
+				"docker_compose_language_service",
+				"dockerls",
+				"jsonls",
+				"gopls",
+				"ts_ls",
+				"bashls",
+				"shfmt",
+				"shellcheck",
+				"tailwindcss-language-server",
+				"taplo",
+				"clangd",
+			}
 		end,
 	},
 	{
-		"williamboman/mason-lspconfig.nvim",
-		config = function()
-			require("mason-lspconfig").setup({
-				ensure_installed = {
-          "pyright",
-          "ansiblels",
-          "awk_ls",
-          "lua_ls",
-          "bashls",
-          "html",
-					"terraformls",
-					"yamlls",
-					"cssls",
-					"docker_compose_language_service",
-					"dockerls",
-					"jsonls",
-					"gopls",
-          "ts_ls",
-          "bashls",
-          -- "shfmt",
-          -- "shellcheck",
-				},
-			})
-		end,
+		"b0o/schemastore.nvim",
 	},
 	{
 		"neovim/nvim-lspconfig",
@@ -50,6 +49,8 @@ return {
 			})
 			lspconfig.terraformls.setup({
 				capabilities = capabilities,
+				filetypes = { "terraform", "tf" },
+				root_dir = lspconfig.util.root_pattern("*.terraform", "*.tf"),
 			})
 			lspconfig.pyright.setup({
 				capabilities = capabilities,
@@ -72,13 +73,31 @@ return {
 			lspconfig.dockerls.setup({
 				capabilities = capabilities,
 			})
+			lspconfig.helm_ls.setup({
+				capabilities = capabilities,
+			})
 			lspconfig.jsonls.setup({
 				capabilities = capabilities,
+				settings = {
+					json = {
+						schemas = require("schemastore").json.schemas(),
+						validate = { enable = true },
+					},
+				},
 			})
 			lspconfig.gopls.setup({
 				capabilities = capabilities,
 			})
 			lspconfig.rust_analyzer.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.tailwindcss.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.taplo.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.clangd.setup({
 				capabilities = capabilities,
 			})
 		end,

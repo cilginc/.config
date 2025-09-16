@@ -15,7 +15,8 @@ vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help ta
 vim.keymap.set("n", "<leader>fd", "<cmd>Telescope zoxide list<CR>", { desc = "List Directory", silent = true })
 
 -- Telescope yaml-companion --
-vim.keymap.set("n", "<leader>yy", "<cmd>Telescope yaml_schema<CR>", { desc = "Yaml Schema", silent = true })
+vim.keymap.set("n", "<leader>yc", "<cmd>Telescope yaml_schema<CR>", { desc = "Yaml Schema", silent = true })
+-- vim.keymap.set("n", "<leader>ys", require("telescope").extensions.schema_companion.select_schema, { desc = "YAML: Select schema" })
 
 -- LSP Config --
 vim.keymap.set("n", "K", vim.lsp.buf.hover)
@@ -26,16 +27,17 @@ vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "Co
 vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, { desc = "Format Code" })
 
 -- Change Line --
-vim.keymap.set("v", "<A-j>", "<cmd>m '>+1<CR>gv=gv", { silent = true })
-vim.keymap.set("n", "<A-j>", "<cmd>m .+1<CR>==", { silent = true })
-vim.keymap.set("n", "<A-k>", "<cmd>m .-2<CR>==", { silent = true })
-vim.keymap.set("v", "<A-k>", "<cmd>m '<-2<CR>gv=gv", { silent = true })
-
--- LazyGit Keybind --
-vim.keymap.set("n", "<leader>lg", "<cmd>LazyGit<CR>", { desc = "LazyGit", silent = true })
+local moveline = require("moveline")
+vim.keymap.set("n", "<A-k>", moveline.up)
+vim.keymap.set("n", "<A-j>", moveline.down)
+vim.keymap.set("v", "<A-k>", moveline.block_up)
+vim.keymap.set("v", "<A-j>", moveline.block_down)
 
 -- GitSigns Keybind --
 vim.keymap.set("n", "<leader>gs", "<cmd>Gitsigns diffthis<CR>", { desc = "Git Diff", silent = true })
+
+-- GitBlame Keybind --
+vim.keymap.set("n", "<leader>gb", "<cmd>GitBlameToggle<CR>", { desc = "Git Blame", silent = true })
 
 -- Ctrl backspace Keybind
 vim.keymap.set("i", "<C-H>", "<C-w>", { silent = true })
@@ -43,6 +45,10 @@ vim.keymap.set("i", "<C-BS>", "<C-w>", { silent = true })
 
 -- Copyalama Keybind
 vim.keymap.set("v", "<C-y>", '"+y', { silent = true })
+
+-- insertde ilerleme rebind
+vim.keymap.set("i", "<C-h>", "<Left>", { silent = true })
+vim.keymap.set("i", "<C-l>", "<Right>", { silent = true })
 
 -- Neovide Config --
 if vim.g.neovide then
@@ -53,8 +59,14 @@ if vim.g.neovide then
 	vim.keymap.set("i", "<C-S-v>", '<ESC>"+pa', { silent = true }) -- Insert modunda yapıştır
 end
 
+-- DAP Config --
+-- ../plugins/nvim-dap.lua
+--
 -- Trouble Keybind --
 -- ../plugins/trouble.lua
+--
+-- Flash Keybind --
+-- ../plugins/flash.lua
 --
 -- Oil.nvim Keybind
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })

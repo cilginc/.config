@@ -8,7 +8,9 @@ function filename_fix()
 		or filename == "compose.yml"
 	then
 		vim.bo.filetype = "yaml.docker-compose"
-	elseif filename == "playbook.yml" or filename == "playbook.yaml" then
+	end
+  -- Ansible config
+	if filename == "playbook.yml" or filename == "playbook.yaml" then
 		vim.bo.filetype = "yaml.ansible"
 	end
 	-- Tauon spesific config here --
@@ -17,6 +19,9 @@ function filename_fix()
 	end
 	-- config config config --
 	if filename == "config" then
+		vim.bo.filetype = "config"
+	end
+	if filename == ".env.local" or filename == ".env" or filename == ".env.prod" or filename == ".env.example" then
 		vim.bo.filetype = "config"
 	end
 end

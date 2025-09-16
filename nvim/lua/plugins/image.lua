@@ -1,7 +1,7 @@
 return {
 	"3rd/image.nvim",
 	build = false,
-  commit = "21909e3eb03bc738cce497f45602bf157b396672",
+	event = "VeryLazy",
 	config = function()
 		if not vim.g.neovide then
 			require("image").setup({
