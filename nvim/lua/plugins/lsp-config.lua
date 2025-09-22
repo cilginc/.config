@@ -34,71 +34,52 @@ return {
 		"neovim/nvim-lspconfig",
 		config = function()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
-			local lspconfig = require("lspconfig")
-			lspconfig.awk_ls.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.lua_ls.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.html.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.ansiblels.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.terraformls.setup({
-				capabilities = capabilities,
+
+			-- Helper
+			local function setup(server, opts)
+				opts = vim.tbl_deep_extend("force", {
+					capabilities = capabilities,
+				}, opts or {})
+				vim.lsp.config(server, opts)
+				vim.lsp.enable(server)
+			end
+
+			local simple_servers = {
+				"awk_ls",
+				"lua_ls",
+				"html",
+				"ansiblels",
+				"pyright",
+				"bashls",
+				"yamlls",
+				"cssls",
+				"docker_compose_language_service",
+				"ts_ls",
+				"dockerls",
+				"helm_ls",
+				"gopls",
+				"tailwindcss",
+				"taplo",
+				"clangd",
+				"rust_analyzer",
+			}
+
+			for _, server in ipairs(simple_servers) do
+				setup(server)
+			end
+
+			setup("terraformls", {
 				filetypes = { "terraform", "tf" },
-				root_dir = lspconfig.util.root_pattern("*.terraform", "*.tf"),
+				root_dir = vim.fs.root(0, { "*.terraform", "*.tf", ".git" }),
 			})
-			lspconfig.pyright.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.bashls.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.yamlls.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.cssls.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.docker_compose_language_service.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.ts_ls.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.dockerls.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.helm_ls.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.jsonls.setup({
-				capabilities = capabilities,
+
+			setup("jsonls", {
 				settings = {
 					json = {
 						schemas = require("schemastore").json.schemas(),
 						validate = { enable = true },
 					},
 				},
-			})
-			lspconfig.gopls.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.rust_analyzer.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.tailwindcss.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.taplo.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.clangd.setup({
-				capabilities = capabilities,
 			})
 		end,
 	},
