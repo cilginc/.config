@@ -1,4 +1,5 @@
 {
+    "closeOnFocusLoss": false,
     "faviconService": "google",
     "font": {
         "size": 10
